@@ -13,15 +13,16 @@ import javax.swing.JButton;
 import java.awt.SystemColor;
 import java.awt.Cursor;
 import javax.swing.ImageIcon;
+import javax.swing.DefaultComboBoxModel;
 
 public class Cep extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JComboBox comboBox;
+	private JTextField textCep;
+	private JTextField textEndereco;
+	private JTextField textBairro;
+	private JTextField textCidade;
+	private JComboBox cbboUf;
 
 	/**
 	 * Launch the application.
@@ -62,15 +63,15 @@ public class Cep extends JFrame {
 		lblNewLabel_1.setBounds(10, 97, 70, 14);
 		contentPane.add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setBounds(73, 57, 126, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		textCep = new JTextField();
+		textCep.setBounds(73, 57, 126, 20);
+		contentPane.add(textCep);
+		textCep.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(73, 94, 312, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		textEndereco = new JTextField();
+		textEndereco.setBounds(73, 94, 312, 20);
+		contentPane.add(textEndereco);
+		textEndereco.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Bairro:");
 		lblNewLabel_2.setBounds(27, 133, 53, 14);
@@ -80,39 +81,40 @@ public class Cep extends JFrame {
 		lblNewLabel_3.setBounds(21, 171, 59, 14);
 		contentPane.add(lblNewLabel_3);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(73, 130, 312, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		textBairro = new JTextField();
+		textBairro.setBounds(73, 130, 312, 20);
+		contentPane.add(textBairro);
+		textBairro.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(73, 168, 218, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		textCidade = new JTextField();
+		textCidade.setBounds(73, 168, 218, 20);
+		contentPane.add(textCidade);
+		textCidade.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("UF:");
 		lblNewLabel_4.setBounds(305, 171, 46, 14);
 		contentPane.add(lblNewLabel_4);
 		
-		comboBox = new JComboBox();
-		comboBox.setBounds(334, 167, 51, 22);
-		contentPane.add(comboBox);
+		cbboUf = new JComboBox();
+		cbboUf.setModel(new DefaultComboBoxModel(new String[] {"", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"}));
+		cbboUf.setBounds(334, 167, 51, 22);
+		contentPane.add(cbboUf);
 		
-		JButton btnNewButton = new JButton("Limpar");
-		btnNewButton.setBounds(35, 215, 89, 23);
-		contentPane.add(btnNewButton);
+		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.setBounds(35, 215, 89, 23);
+		contentPane.add(btnLimpar);
 		
-		JButton btnNewButton_1 = new JButton("Buscar");
-		btnNewButton_1.setBounds(214, 56, 89, 23);
-		contentPane.add(btnNewButton_1);
+		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.setBounds(214, 56, 89, 23);
+		contentPane.add(btnBuscar);
 		
-		JButton btnNewButton_2 = new JButton("");
-		btnNewButton_2.setToolTipText("Sobre");
-		btnNewButton_2.setIcon(new ImageIcon(Cep.class.getResource("/img/about.png")));
-		btnNewButton_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton_2.setBorder(null);
-		btnNewButton_2.setBackground(SystemColor.control);
-		btnNewButton_2.setBounds(334, 11, 48, 48);
-		contentPane.add(btnNewButton_2);
+		JButton btnSobre = new JButton("");
+		btnSobre.setToolTipText("Sobre");
+		btnSobre.setIcon(new ImageIcon(Cep.class.getResource("/img/about.png")));
+		btnSobre.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnSobre.setBorder(null);
+		btnSobre.setBackground(SystemColor.control);
+		btnSobre.setBounds(334, 11, 48, 48);
+		contentPane.add(btnSobre);
 	}
 }
