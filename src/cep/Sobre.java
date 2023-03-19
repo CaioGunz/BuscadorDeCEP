@@ -1,14 +1,20 @@
 package cep;
 
-import java.awt.EventQueue;
-
-import javax.swing.JDialog;
-import java.awt.Toolkit;
-import javax.swing.JLabel;
-import java.awt.SystemColor;
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
 import java.awt.Cursor;
+import java.awt.Desktop;
+import java.awt.EventQueue;
+import java.awt.SystemColor;
+import java.awt.Toolkit;
+import java.net.URI;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Sobre extends JDialog {
 
@@ -52,12 +58,24 @@ public class Sobre extends JDialog {
 		lblNewLabel_2.setBounds(43, 122, 108, 14);
 		getContentPane().add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("republicavirtural.com.br");
-		lblNewLabel_3.setForeground(SystemColor.textHighlight);
-		lblNewLabel_3.setBounds(126, 122, 242, 14);
-		getContentPane().add(lblNewLabel_3);
+		JLabel lblWebService = new JLabel("republicavirtural.com.br");
+		lblWebService.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				link("https://republicavirtual.com.br/");
+			}
+		});
+		lblWebService.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblWebService.setForeground(SystemColor.textHighlight);
+		lblWebService.setBounds(126, 122, 242, 14);
+		getContentPane().add(lblWebService);
 		
 		JButton btnGitHub = new JButton("");
+		btnGitHub.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				link("https://github.com/CaioGunz/BuscadorDeCep");
+			}
+		});
 		btnGitHub.setBackground(SystemColor.control);
 		btnGitHub.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnGitHub.setToolTipText("Projeto");
@@ -65,7 +83,17 @@ public class Sobre extends JDialog {
 		btnGitHub.setIcon(new ImageIcon(Sobre.class.getResource("/img/github.png")));
 		btnGitHub.setBounds(37, 190, 48, 48);
 		getContentPane().add(btnGitHub);
-
+		
+	} // fim do construtor
+	
+	private void link(String site) {
+		Desktop desktop = Desktop.getDesktop();
+		try {
+			URI uri = new URI(site);
+			desktop.browse(uri);
+		} catch(Exception e ) {
+			System.out.println(e);
+		}
 	}
-
+	
 }
